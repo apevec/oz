@@ -550,3 +550,14 @@ def config_get_boolean_key(config, section, key, default):
         raise Exception, "Configuration parameter '%s' must be True, Yes, False, or No" % (key)
 
     return retval
+
+def default_data_dir():
+    if os.geteuid() == 0:
+        directory = "/var/lib/oz"
+    else:
+        directory = "~/.oz"
+
+    return os.path.expanduser(directory)
+
+def default_screenshot_dir():
+    return os.path.join(default_data_dir(), "screenshots")
