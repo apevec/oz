@@ -1,4 +1,5 @@
 # Copyright (C) 2010,2011  Chris Lalancette <clalance@redhat.com>
+# Copyright (C) 2012,2013  Chris Lalancette <clalancette@gmail.com>
 
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -53,5 +54,5 @@ def get_class(tdl, config, auto, output_disk=None):
     """
     Factory method for RHEL-6 installs.
     """
-    if tdl.update in ["0", "1", "2"]:
+    if tdl.update[0].isdigit():
         return RHEL6Guest(tdl, config, auto, output_disk)
